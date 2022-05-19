@@ -4,7 +4,7 @@ module.exports = (req, res, next) => {
     const token = req.headers.authorization;
     const decoded = jwt.decode(token, "secret123");
     const verify = jwt.verify(token, "secret123");
-    req.body.user_type = decoded.userType;
+    req.body.userDetails = decoded;
     next();
   } catch (err) {
     res.status(401).json({
